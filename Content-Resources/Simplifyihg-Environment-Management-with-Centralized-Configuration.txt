@@ -1,0 +1,62 @@
+- Removing settings from compiled code
+- Change runtime behaviors
+- Enforce consistency across elastic services
+- Cache values to reduce load on databases
+
+Problems with the Status Quo
+- Local configuration files fall out of sync
+- No history of changes with Env variables
+- Configuration changes require restart
+- Challenges with sensitive information
+- Inconsistent usage across teams
+
+Spring Cloud Config
+HTTP access to git or file based configurations.
+
+Creating the Config Server: Choosing a Source
+
+Local Files:
+- points to classpath or file system
+- multiple search locations possible
+- No audit trail
+- Supports labelling
+- Support for placeholders in URI
+- Relies on "native" profile
+- Dev/test only, unless set up in reliable, shared fashion
+
+Git-based Repository:
+- Point to git repo
+- Multiple search locations possible
+- Full change history
+- Supports Labelling
+- Support for placeholders in URI
+- Multiple profiles possible
+- Local git for dev/test highly available file system or service for production
+
+Setting up Configuration Files
+- Native support of YML, properties files
+- Can serve out any text file
+- File name contains app, optionally profile
+- Nested folders supported
+- All matching files returned
+
+Creating the Config Server: The Spring Project
+1) Use start.spring.io, Spring Tool suit or chosen IDE to generate scaffolding
+2) See POM dependency on spring-cloud-config-server and Spring-boot-starter-actuator
+3) Add @EnableConfigServer annotation to class.
+4) Create Application properties (or YAML) with server port, app name, and profile
+
+
+Invoking Task via HTTP and Spring Cloud Stream
+1) make HTTP call => Http Listener
+2) Create TaskLunchRequest -> publish message => Spring Cloud Stream
+3) Task Routed => Event Sink
+4) Object requested -> object returned => Maven Repo
+5) Task launched => Task
+
+Demo
+Create RabbitMQ environment
+Build event sink
+Build launcher
+Submit request and see execution
+
