@@ -30,9 +30,9 @@ public class  SpringcloudApplication {
 			if(null !=strings){
 				System.out.println("parameter length is " + strings.length);
 
-				String stationId = strings[0];
-				String licensePlate = strings[1];
-				String timeStamp = strings[2];
+				String stationId = strings[1];
+				String licensePlate = strings[2];
+				String timeStamp = strings[3];
 
 				System.out.println("Station ID is " + stationId + ", plate is " + licensePlate + ", timestamp is " + timeStamp);
 			}
